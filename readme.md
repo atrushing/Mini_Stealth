@@ -1,6 +1,6 @@
 ## Mini Stealth - A Scaled Down Stealthburner
 
-![Size Comparison](/home/alan/git/Mini_Stealth/Mini_Stealth_Stealthburner_Size_Comparison.png)
+![Size Comparison](/Mini_Stealth_Stealthburner_Size_Comparison.png)
 
 This is the Version 2 release of the Mini Stealth toolhead. It is about 5/8 the size of the official Stealthburner and weighs considerably less. It uses a pair of 4010 blowers for part cooling and a 3010 fan for the hotend. The blowers use glued in [air guides](https://www.teamfdm.com/forums/topic/1886-vorpal-180-a-printed-printer/?do=findComment&comment=13431&_rid=1756) to increase airflow by [about 20%](https://www.teamfdm.com/forums/topic/1886-vorpal-180-a-printed-printer/?do=findComment&comment=13566&_rid=1756) compared to the Mini Stealth v1. This toolhead was entirely designed in 󰂫 Blender and I only have mesh files available.
 
@@ -25,7 +25,7 @@ There are currently 17 different hotends supported by this toolhead.
 
 Here is an example of how the core and shroud are assembled. There are pockets for 3x6mm magnets but I have found that they aren't really needed as the slot has a nice friction fit with the layer lines giving extra grip. Also, if the magnets aren't seated completly flush, they will prevent the shroud from seating in the correct location.
 
-![Mini Stealth Split](/home/alan/git/Mini_Stealth/Mini_Stealth_v2.0_Split.png)
+![Mini Stealth Split](/Mini_Stealth_v2.0_Split.png)
 
 Looking closely you can see three M3 shim washers stacked under each of the M3x40 BHC screws securing the core to the [DAB x-carriage](https://www.teamfdm.com/files/file/760-mini-stealth-dab-beta-release/). Some component combinations will require these shims, such as with the MGN9 mod on a V0.1/2 in order to avoid crushing the linear carriage when installing. It is best practice to do a dry-run and measure clearances before final installation.
 
