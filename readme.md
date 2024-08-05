@@ -13,15 +13,19 @@ The new design mounts the extruder and hotend to a *[core piece](https://www.tea
 
 ¹ <small>The Sherpa Micro has a different mounting hole pattern and has its own set of *core pieces*</small>
 
-There are currently 17 different hotends supported by this toolhead.
+There are currently 21 different hotends supported by this toolhead. The cores for the top three in the chart are shared by the others in each group. The bottom nine hotends each have their own cores.
 
-| Dropeffect XG                 | Creality Spider Pro       | Bambu Lab X1             |
-|:-----------------------------:|:-------------------------:|:------------------------:|
-| Slice Mosquito                | Nitram VolcoMosq          | Revo Voron               |
-| Phaetus Rapido                | Phaetus Rapido UHF        | Phaetus Dragon UHF       |
-| Triangle Labs T-Vocano Dragon | Triangle Labs CHCB-V V6DM | Triangle Labs Dragon ACE |
-| Phaetus Dragon ST/HF          | Triangle Labs TCHC TD6S   | Phaetus Dragonfly BMS7   |
-| Phaetus Dragonfly BMS6        | Phaetus Dragonfly BMO     |                          |
+| Slice Mosquito          | Phaetus Rapido                | Phaetus Dragon ST/HF |
+|:-----------------------:|:-----------------------------:|:--------------------:|
+| Mellow NF Crazy Volcano | Phaetus Rapido UHF            | DropEffect neXtG UHF |
+| Nitram VolcoMosq        | Phaetus Dragon UHF            | Triangle Labs TZ V6  |
+|                         | Triangle Labs T-Vocano Dragon |                      |
+|                         | Triangle Labs CHCB-V V6DM     |                      |
+|                         | DropEffect neXtG              |                      |
+|                         |                               |                      |
+| Phaetus Dragonfly BMO   | Revo Voron                    | Bambu Lab X1         |
+| Phaetus Dragonfly BMS7  | Triangle Labs Dragon ACE      | Creality Spider Pro  |
+| Phaetus Dragonfly BMS6  | Triangle Labs TCHC TD6S       | Dropeffect XG        |
 
 Here is an example of how the core and shroud are assembled. There are pockets for 3x6mm magnets but I have found that they aren't really needed as the slot has a nice friction fit with the layer lines giving extra grip. Also, if the magnets aren't seated completly flush, they will prevent the shroud from seating in the correct location.
 
