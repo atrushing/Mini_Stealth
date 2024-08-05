@@ -37,4 +37,6 @@ The .stl files in the Common_Parts folder should be compatible across the entire
 
 I still need to work up new assembly instructions for this v2 toolhead. For supporting these designs, I am most active over on [TeamFDM.com](https://www.teamfdm.com/profile/1756-atrushing/content/?type=downloads_file&change_section=1) and will be happy to [answer questions](https://www.teamfdm.com/forums/topic/3433-mini-stealth-v2-is-available) there. The Mini Stealth files available on TeamFDM are of the version 1 release, while the current v2 files are all here.
 
+I started working on a [configurator](https://atrushing.github.io/Sidewinder-Switchwire/) for this toolhead but I still have a lot to learn about JavaScript. If anyone would like to help with this, please drop me a message on [TeamFDM](https://www.teamfdm.com/profile/1756-atrushing/).
+
 If you would like to [support](https://paypal.me/atrushing) the development of these mods I would be very grateful.
