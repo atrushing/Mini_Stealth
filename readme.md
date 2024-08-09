@@ -35,6 +35,10 @@ Looking closely you can see three M3 shim washers (DIN988) stacked under each of
 
 The .stl files in the Common_Parts folder should be compatible across the entire range of Mini Stealth versions. This includes all of the x-carriage options (DAB as well) and supplemental parts such as LED mounts and diffuser.
 
+There are 74 different shrouds grouped by extruder type. Each of the 74 shrouds comes in four flavors. The basic shroud, a ZeroClick version and left or right probe-mount versions. The last two use M2.5x6 flathead screws to fit brackets that hold [six different probes](https://raw.githubusercontent.com/atrushing/Mini_Stealth/main/Ender_3_parts/Ender_3_Probe_Options_1.png).
+
+![Shroud Versions](https://raw.githubusercontent.com/atrushing/Mini_Stealth/main/Shroud_Versions.png)
+
 I still need to work up new assembly instructions for this v2 toolhead. For supporting these designs, I am most active over on [TeamFDM.com](https://www.teamfdm.com/profile/1756-atrushing/content/?type=downloads_file&change_section=1) and will be happy to [answer questions](https://www.teamfdm.com/forums/topic/3433-mini-stealth-v2-is-available) there. The Mini Stealth files available on TeamFDM are of the version 1 release, while the current v2 files are all here.
 
 I started working on a [configurator](https://atrushing.github.io/Sidewinder-Switchwire/) for this toolhead but I still have a lot to learn about JavaScript. If anyone would like to help with this, please drop me a message on [TeamFDM](https://www.teamfdm.com/profile/1756-atrushing/).
