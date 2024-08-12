@@ -17,6 +17,10 @@ There are additional Switchwire style mounts for front or top mounted linear rai
 ![Switchwire Style Mount](Ender_3_Switchwire_Style_Mount.png)
 ![Toothed Wedge](Toothed_Wedge_Belt_Clamp.png)
 
+With the front-mounted linear rails, there is room to install a Beacon3D probe under the x-carriage.
+
+![Beacon Probe Mounts](Beacon_Probe_Mount.png)
+
 ## Ender 6 Installation
 
 The Ender 6 mount has been improved and should fit most of the extruder options except the Orbiter 1.5 and Galileo SA.
