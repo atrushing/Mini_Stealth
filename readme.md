@@ -17,11 +17,11 @@ There are currently 21 different hotends supported by this toolhead. The cores f
 
 | Slice Mosquito          | Phaetus Rapido                | Phaetus Dragon ST/HF |
 |:-----------------------:|:-----------------------------:|:--------------------:|
-| Mellow NF Crazy Volcano | Phaetus Rapido UHF            | DropEffect neXtG UHF |
+| Mellow NF Crazy Volcano | Phaetus Rapido UHF            | DropEffect neXtG     |
 | Nitram VolcoMosq        | Phaetus Dragon UHF            | Triangle Labs TZ V6  |
 |                         | Triangle Labs T-Vocano Dragon |                      |
 |                         | Triangle Labs CHCB-V V6DM     |                      |
-|                         | DropEffect neXtG              |                      |
+|                         | DropEffect neXtG UHF          |                      |
 |                         |                               |                      |
 | Phaetus Dragonfly BMO   | Revo Voron                    | Bambu Lab X1         |
 | Phaetus Dragonfly BMS7  | Triangle Labs Dragon ACE      | Creality Spider Pro  |
