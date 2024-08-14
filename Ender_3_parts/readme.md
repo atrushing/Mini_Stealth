@@ -17,9 +17,10 @@ There are additional Switchwire style mounts for front or top mounted linear rai
 ![Switchwire Style Mount](Ender_3_Switchwire_Style_Mount.png)
 ![Toothed Wedge](Toothed_Wedge_Belt_Clamp.png)
 
-With the front-mounted linear rails, there is room to install a Beacon3D probe under the x-carriage.
+With the front-mounted linear rails, there is room to install a Beacon3D probe or a Biqu MicroProbe under the x-carriage.
 
-![Beacon Probe Mounts](Beacon_Probe_Mount.png)
+![Beacon Probe Mount](Beacon_Probe_Mount.png)
+![Biqu MicroProbe Mount](Biqu_MicroProbe_Mount.png)
 
 ## Ender 6 Installation
 
