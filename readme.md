@@ -53,7 +53,9 @@ There are four different motor bridge pieces for each extruder that address diff
 
 This is an effort at making a shroud to fit the Goliath Air hotend. There are only crop-top shrouds available which use 4010 blowers for part cooling and a 2510 radial fan for cooling the hotend heat-break.
 
-![Goliath 01](MiniStealth_Goliath.png) The Goliath hotend fits onto any of the existing DragonAce core pieces in this repository. As installed, the nozzle sits 18.5mm lower than any of the standard length hotends and 10mm lower than the UHF hotends.
+![Goliath 01](MiniStealth_Goliath.png)
+
+The Goliath hotend fits onto any of the existing DragonAce core pieces in this repository. As installed, the nozzle sits 18.5mm lower than any of the standard length hotends and 10mm lower than the UHF hotends.
 
 There are spring clips built into the shroud to hold the 2510 fan in place. They are designed with a 0.3mm gap that will not require supports but should allow them to act as springs. These might still need some adjustment.
 
