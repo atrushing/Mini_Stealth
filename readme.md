@@ -6,9 +6,9 @@ This is the Version 2 release of the Mini Stealth toolhead. It is about 5/8 the 
 
 The new design mounts the extruder and hotend to a *[core piece](https://www.teamfdm.com/forums/topic/1886-vorpal-180-a-printed-printer/?do=findComment&comment=15428&_rid=1756)* and mounts the blowers, hotend fan and LEDs into the *shroud* that slides onto the core. This makes assembly and maintenance much easier and the extruder can be fully removed while the core remains installed on the printer. There are thirteen extruders supported by the Mini Stealth.
 
-| Orbiter 1.5    | Orbiter 2.0                         | Sherpa Mini   | LGXLite | VzHextrudort |
+| Orbiter 1.5    | Orbiter 2.0                         | Sherpa Mini   | LGX Lite | VzHextrudort |
 | -------------- | ----------------------------------- | ------------- | -------- | ------------ |
-| WristWatch BMG | WristWatch G2SA                     | SherpaMicro¹ | HGXLite | Galileo SA   |
+| WristWatch BMG | WristWatch G2SA                     | Sherpa Micro¹ | HGX Lite | Galileo SA   |
 | Hummingbird    | ProtoXtruder <small>(v1&v2)</small> | Creality K1   |          |              |
 
 ¹ <small>There is also a mirrored version of the Sherpa Micro that adds a filament release lever on the left side</small>
@@ -48,6 +48,31 @@ There are six sets of core pieces with unique mounting holes for different extru
 There are four different motor bridge pieces for each extruder that address different cable management options. The umbilical PCB option uses a pair of heat-set inserts to secure a secondary printed piece.
 
 ![Motor Bridges](Motor_Bridges.png)
+
+### Heatset Inserts
+
+- The only hotends that require heat-set inserts are the Bambu and the Dragonfly BMS models.
+
+- Most of the extruders are secured with two inserts from below the *core* piece but some use M3 square nuts installed from the side of the *core*
+
+- Most of the x-carriages will use a pair of inserts from the back to secure the *core*
+
+- Most of the cable_doors will use one insert on the non-hinged side to secure it to the back side of the *core*
+
+- A few cable_doors use two inserts on either side at the bottom and then hook under the top of the shroud
+
+- The Omron probe (and Klicky) requires a pair of inserts in the retainer_bracket behind the x-frames
+
+- Mounting a Beacon/Cartographer probe uses two inserts in the bottom of the x-frames
+
+- The motor_bridge mounts for 2 or 3 hole cable chains will require inserts
+
+- Mounting an umbilical PCB requires two inserts. Depending on which 
+  extruder is used, the second image below shows where they are installed
+
+![Heatsets1](Heatsets1.png)
+
+![Heatsets2](Heatsets2.png)
 
 ### Mini Stealth - Vz Goliath Hotend Versions
 
