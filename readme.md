@@ -69,150 +69,208 @@ If you would like to [support](https://paypal.me/atrushing) the development of t
 
 #### 6 Feb 2025
 
-Added support for WristWatch BMG & G2SA extruders
-There are now two versions for the Sherpa Micro, normal and mirrored. (the mirrored version fits my modification with a filament release lever on the left side)
-Added the modded+mirrored Sherpa Micro .stl files in this repo
-Added support for HGX Lite extruder
-Added support for Creality K1 extruder
-Added support for Goliath hotend (CropTop only)
-Added 2.4/Trident x-frames for Goliath hotend
-Minor shroud geometry cleanup
-Fixed mis-aligned first layer of x-frame pieces
-Added support for 2510 hotend fan to all shroud options
-Added right side probe support
-Added new hex patterns to fit the 2510 shrouds
-Re-organized GitHub folder structure based on extruder selection
-Update and improve readme files
+- Added support for WristWatch BMG & G2SA extruders
+
+- There are now two versions for the Sherpa Micro, normal and mirrored. (the mirrored version fits my modification with a filament release lever on the left side)
+
+- Added the modded+mirrored Sherpa Micro .stl files in this repo
+
+- Added support for HGX Lite extruder
+
+- Added support for Creality K1 extruder
+
+- Added support for Goliath hotend (CropTop only)
+
+- Added 2.4/Trident x-frames for Goliath hotend
+
+- Minor shroud geometry cleanup
+
+- Fixed mis-aligned first layer of x-frame pieces
+
+- Added support for 2510 hotend fan to all shroud options
+
+- Added right side probe support
+
+- Added new hex patterns to fit the 2510 shrouds
+
+- Re-organized GitHub folder structure based on extruder selection
+
+- Update and improve readme files
 
 #### 6 Apr 2024 v2.0 Release
 
-More extruders have been added.
-More hotends have been added.
-The shroud is now separate from the core.
-The shroud fits onto the core with a pair of sliding grooves and can fit magnets to improve the connection as needed.
-The hotend can be installed to the core and then mounted to the printers' gantry. Everything else can be installed (or removed) while on the printer.
-All core pieces and shrouds are compatible with 25mm or 26mm x-carriages. :: i.e. Mini Stealthburner CNC aluminum carriages.
-All x-carriages are compatible with any hotend/extruder combination.
-There are specific UHF x-frames for Trident, V2.4 and Switchwire printers to provide probe compatibility.
-The V0.1/V0.2 x-carriages are much stiffer with side ribs that require included XY_Joint_Upper pieces.
-The 25mm spacing improves the Ender 3 mount which is available in the repo.
-The LED diffuser and carriage are new and simplified.
-The Rainbow BARF carriage is now in two part and should be easier to fit.
-All shrouds have standard, ZeroClick and Differential IR options.
-The 4010 blowers use a glued in (CA glue) air guide to increase airflow at the nozzle.
-The UHF shrouds have been re-worked to put the 4010 blowers lower, matching the standard shrouds.
-New probe mounting side brackets have been added that fit the Differential IR shrouds. Thanks to @Titus A Duxass for the concept!
-    Biqu MicroProbe
-    PINDA
-    BL-Touch
-I have added Knomi2 shrouds that should also fit the Mellow Fly-Halo display.
-I have made Crop-Top shrouds for each extruder option.
-Each extruder has motor_bridge pieces that support cable management, cable chain mounts or umbilical PCB mounting.
-The umbilical PCB mounts are vertical for better ADXL readings.
-All parts have been modified for cleaner and more consistent geometry across versions.
+- More extruders have been added.
+
+- More hotends have been added.
+
+- The shroud is now separate from the core.
+
+- The shroud fits onto the core with a pair of sliding grooves and can fit magnets to
+
+- improve the connection as needed.
+
+- The hotend can be installed to the core and then mounted to the printers' gantry.
+
+- Everything else can be installed (or removed) while on the printer.
+
+- All core pieces and shrouds are compatible with 25mm or 26mm x-carriages. :: i.e.
+
+- Mini Stealthburner CNC aluminum carriages.
+
+- All x-carriages are compatible with any hotend/extruder combination.
+
+- There are specific UHF x-frames for Trident, V2.4 and Switchwire printers to provide probe compatibility.
+
+- The V0.1/V0.2 x-carriages are much stiffer with side ribs that require included XY_Joint_Upper pieces.
+
+- The 25mm spacing improves the Ender 3 mount which is available in the repo.
+
+- The LED diffuser and carriage are new and simplified.
+
+- The Rainbow BARF carriage is now in two part and should be easier to fit.
+
+- All shrouds have standard, ZeroClick and Differential IR options.
+
+- The 4010 blowers use a glued in (CA glue) air guide to increase airflow at the nozzle.
+
+- The UHF shrouds have been re-worked to put the 4010 blowers lower, matching the standard shrouds.
+
+- New probe mounting side brackets have been added that fit the Differential IR shrouds. Thanks to @Titus A Duxass for the concept!
+  
+  - Biqu MicroProbe
+  
+  - PINDA
+  
+  - BL-Touch
+
+- I have added Knomi2 shrouds that should also fit the Mellow Fly-Halo display.
+
+- I have made Crop-Top shrouds for each extruder option.
+
+- Each extruder has motor_bridge pieces that support cable management, cable chain mounts or umbilical PCB mounting.
+
+- The umbilical PCB mounts are vertical for better ADXL readings.
+
+- All parts have been modified for cleaner and more consistent geometry across versions.
 
 #### 16 May 2023 v1.2.5
 
-Added Euclid and Biqu MicroProbe mounts for Trident, 2.4 and Switchwire
-Upload corrected version of ZeroClick Mount
+- Added Euclid and Biqu MicroProbe mounts for Trident, 2.4 and Switchwire
+
+- Upload corrected version of ZeroClick Mount
 
 #### 12 Apr 2023 v1.2.5
 
-Added missing Crop-Top .stl and image
+- Added missing Crop-Top .stl and image
 
 #### 4 Mar 2023 v1.2.5
 
-Added feature to x-frame_right to allow mounting X limit switch as with the Umbilical Mod
-Added Beacon3D compatible x-frame sets for V2.4, Trident and for Switchwire
-Added new shrouds to fit the Creality Spider Pro hotend
+- Added feature to x-frame_right to allow mounting X limit switch as with the Umbilical Mod
+
+- Added Beacon3D compatible x-frame sets for V2.4, Trident and for Switchwire
+
+- Added new shrouds to fit the Creality Spider Pro hotend
 
 #### 28 Feb 2023 v1.2.4
 
-Added wire slot for LEDs wires to fit past 3010 fan. The last revision wasn't sufficient.
-All shroud files are new.
+- Added wire slot for LEDs wires to fit past 3010 fan. The last revision wasn't sufficient.
+
+- All shroud files are new.
 
 #### 26 Feb 2023 v1.2.3
 
-Fixed pinching of LED wires when using 3010 fan.
+- Fixed pinching of LED wires when using 3010 fan.
 
 #### 24 Feb 2023 v1.2.2
 
-Improved rigidity of x-carriage mounting for the V0.1/V0.2 by moving the heat-set insert to the back side.
-This requires 5mm longer screws to mount the shroud.
-Improved how the front two screws fit into the shroud when mounting onto the carriage. This used to be chamfered but now is flat for better load transfer. All shroud .stl files are new.
-Uploaded new version of x-frame pieces with more clearance to fit 4010 blowers from different suppliers.
-Added x-frame pieces for Switchwire builds. These pieces can fit the standard capacitive probe or fit a BL-Touch. Since the stepper sits very low with the Orbiter, the Z height of the nozzle is raised by 3mm compared to the official Switchwire x-frame design.
+- Improved rigidity of x-carriage mounting for the V0.1/V0.2 by moving the heat-set insert to the back side.
+
+- This requires 5mm longer screws to mount the shroud.
+
+- Improved how the front two screws fit into the shroud when mounting onto the carriage. This used to be chamfered but now is flat for better load transfer. All shroud .stl files are new.
+
+- Uploaded new version of x-frame pieces with more clearance to fit 4010 blowers from different suppliers.
+
+- Added x-frame pieces for Switchwire builds. These pieces can fit the standard capacitive probe or fit a BL-Touch. Since the stepper sits very low with the Orbiter, the Z height of the nozzle is raised by 3mm compared to the official Switchwire x-frame design.
 
 #### 22 Feb 2023 v1.2.1
 
-Added a hex pattern and tutorial based on the 3DP-MAMSIH mod
+- Added a hex pattern and tutorial based on the 3DP-MAMSIH mod
 
 #### 13 Feb 2023 v1.2.0
 
-Improved cooling by aiming ducts 6 deg lower at hotend nozzle tip.
-Added compatibility with 3010 hotend fan. 3007 fan still fits using clip-in adapter
-Added versions for ZeroClick mod
-Added versions for differential IR probe.
-Added newer version for the VolcoMosq hotend
-Minor geometry cleanup.
-All shroud .stl files are new
+- Improved cooling by aiming ducts 6 deg lower at hotend nozzle tip.
+
+- Added compatibility with 3010 hotend fan. 3007 fan still fits using clip-in adapter
+
+- Added versions for ZeroClick mod
+
+- Added versions for differential IR probe.
+
+- Added newer version for the VolcoMosq hotend
+
+- Minor geometry cleanup.
+
+- All shroud .stl files are new
 
 #### 10 Feb 2023
 
-Release of Sherpa Mini version
+- Release of Sherpa Mini version
 
 #### 31 Jan 2023 v1.1.7
 
-Added stretched versions for the Rapido UHF, Dragon UHF and the VolcoMosq hotends
+- Added stretched versions for the Rapido UHF, Dragon UHF and the VolcoMosq hotends
 
 #### 19 Jan 2023 v1.1.6
 
-Added Umbilical-mod mount remixed from skuep's mod
-Replaced motor_bridge with version with space for M3 heat set inserts to allow for mounting PCB or Umbilical-mod behind the stepper
+- Added Umbilical-mod mount remixed from skuep's mod
+
+- Replaced motor_bridge with version with space for M3 heat set inserts to allow for mounting PCB or Umbilical-mod behind the stepper
 
 #### 22 Nov 2022 v1.1.5
 
-Added versions for Slice Mosquito hotend
+- Added versions for Slice Mosquito hotend
 
 #### 10 Nov 2022 v1.1.4
 
-Added an x_carriage for the V0.1 MGN-9 mod
+- Added an x_carriage for the V0.1 MGN-9 mod
 
 #### 1 Nov 2022
 
-Release of LGX Lite version
+- Release of LGX Lite version
 
 #### 24 Oct 2022 v1.1.3
 
-Added versions to fit the Rapido HF hotend
+- Added versions to fit the Rapido HF hotend
 
 #### 22 Oct 2022 v1.1.2
 
-Added versions to fit the Revo Voron hotend
+- Added versions to fit the Revo Voron hotend
 
 #### 22 Oct 2022 v1.1.1
 
-Fixed mesh error in [a]_MIni_Stlb_Orbiter_2.0_main_body.stl
+- Fixed mesh error in [a]_MIni_Stlb_Orbiter_2.0_main_body.stl
 
 #### 17 Oct 2022 v1.1.0
 
-Fixed wire clearance issue on x_carriage_mini_stlb
-Updated all main_body files with with more room for cable routing
+- Fixed wire clearance issue on x_carriage_mini_stlb
+
+- Updated all main_body files with with more room for cable routing
 
 #### 15 Oct 2022 v1.0.1
 
-Added versions for compatibility with the Dragon hotend
+- Added versions for compatibility with the Dragon hotend
 
-Changed naming scheme for better description of versions
+- Changed naming scheme for better description of versions
 
 #### 14 Oct 2022 v1.0.0
 
-Modified 'cable_door' due to interference with V0.1 x-axis endstop.
+- Modified 'cable_door' due to interference with V0.1 x-axis endstop.
 
 #### 13 Oct 2022
 
-Release of Orbiter 2.0 version
+- Release of Orbiter 2.0 version
 
 #### 30 Sept 2022
 
-Initial Mini Stealth release (Orbiter 1.5 version)
+- Initial Mini Stealth release (Orbiter 1.5 version)
