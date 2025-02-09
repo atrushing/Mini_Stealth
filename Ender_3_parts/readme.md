@@ -2,7 +2,7 @@
 
 ## Ender 3 Installation Options
 
-Here are center mounts for installing the Mini Stealth (UHF or Standard) on an Ender 3. 
+Here are centered mounts for installing the Mini Stealth (UHF or Standard) on an Ender 3. 
 
 ![Ender 3 Mount](https://www.teamfdm.com/uploads/monthly_2024_06/2024-06-05-181834_1515x651_scrot.png.3b1fc021b664d2912ac2eafe21e9a3c1.png)
 
@@ -10,7 +10,7 @@ For some extruder options, the stepper motor sits rather low and might require s
 
 ![Ender 3 Stepper Clearance](https://www.teamfdm.com/uploads/monthly_2024_06/20240605_224403.jpg.0af98d8d71a219dec749ac4d42a14bc5.jpg)
 
-I have also made side mounts for several probes that can be installed on the Differential IR shroud versions. They require M2.5x6 flathead screws to connect the brackets to the shroud while leaving clearance for the 4010 blower.
+I have also made side mounts for several probes that can be installed on the ProbeLeft/Right shroud versions. They require M2.5x6 flathead screws to connect the brackets to the shroud while leaving clearance for the 4010 blower.
 
 There are additional Switchwire style mounts for front or top mounted linear rails. The front mounted MGN12 rail can be installed directly on the 2020 extrusion. The rest of the linear rail mod variations are designed assuming 4.5mm of spacing between the 2020 extrusion and the back of the linear rail. The timing belt is secured from below with a toothed wedge. Further information is available in the TeamFDM comments starting [here](https://www.teamfdm.com/files/file/657-mini-stealth-mini-sherpa/?do=findComment&comment=1920&_rid=1756) but the GitHub files are more current.
 
