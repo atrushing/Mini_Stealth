@@ -45,7 +45,7 @@ There are six sets of core pieces with unique mounting holes for different extru
 
 ![Shroud Versions2](Shroud_Versions2.png)
 
-There are four different motor bridge pieces for each extruder that address different cable management options. The umbilical PCB option uses a pair of heat-set inserts to secure a secondary printed piece.
+There are four different motor bridge pieces for each extruder that address different cable management options. The umbilical PCB option uses a pair of heat-set inserts to secure a secondary printed piece. The motor_bridge for the cable chains uses M2.5 flathead screws threaded into the plastic to attach the secondary piece.
 
 ![Motor Bridges](Motor_Bridges.png)
 
