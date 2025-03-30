@@ -2,7 +2,7 @@
 
 ![Size Comparison](Mini_Stealth_Stealthburner_Size_Comparison.png)
 
-This is the Version 2 release of the Mini Stealth toolhead. It is about 5/8 the size of the official Stealthburner and weighs considerably less. It uses a pair of 4010 blowers for part cooling and a 3010/2510 fan for the hotend. The blowers use glued in [air guides](https://www.teamfdm.com/forums/topic/1886-vorpal-180-a-printed-printer/?do=findComment&comment=13431&_rid=1756) to increase airflow by [about 20%](https://www.teamfdm.com/forums/topic/1886-vorpal-180-a-printed-printer/?do=findComment&comment=13566&_rid=1756) compared to the Mini Stealth v1. This toolhead was entirely designed in Blender and I only have mesh files available.
+This is the Version 2 release of the Mini Stealth toolhead. It is about 5/8 the size of the official Stealthburner and weighs considerably less. It uses a pair of 4010 blowers for part cooling and a 3010/2510 fan for the hotend. The blowers use glued in [air guides](https://www.teamfdm.com/forums/topic/1886-vorpal-180-a-printed-printer/?do=findComment&comment=13431&_rid=1756) to increase airflow by [about 20%](https://www.teamfdm.com/forums/topic/1886-vorpal-180-a-printed-printer/?do=findComment&comment=13566&_rid=1756) compared to the Mini Stealth v1. This toolhead was entirely designed in ![Blender](blender_icon_16x16.png) Blender and I only have mesh files available.
 
 The new design mounts the extruder and hotend to a *[core piece](https://www.teamfdm.com/forums/topic/1886-vorpal-180-a-printed-printer/?do=findComment&comment=15428&_rid=1756)* and mounts the blowers, hotend fan and LEDs into the *shroud* that slides onto the core. This makes assembly and maintenance much easier and the extruder can be fully removed while the core remains installed on the printer. There are thirteen extruders supported by the Mini Stealth.
 
@@ -41,7 +41,7 @@ There are 90 different shrouds grouped by extruder type. Each of the 90 shrouds 
 
 ![Shroud Versions1](Shroud_Versions1.png)
 
-There are six sets of core pieces with unique mounting holes for different extruder groups. Each extruder folder has a copy of the applicable core pieces to avoid confusion. The extruders with magenta shrouds above all use an adapter plate to secure the extruder to the core piece. 
+There are six sets of core pieces with unique mounting holes for different extruder groups. Each extruder folder has a copy of the applicable core pieces to avoid confusion. The extruders in the image above with magenta shrouds all use an adapter plate to secure the extruder to the core piece. 
 
 ![Shroud Versions2](Shroud_Versions2.png)
 
@@ -93,6 +93,19 @@ I started working on a [configurator](https://atrushing.github.io/Sidewinder-Swi
 If you would like to [support](https://paypal.me/atrushing) the development of these mods I would be very grateful.
 
 ### - - Changelog - -
+
+#### 30 Mar 2025
+
+- Modified new core pieces to allow JST connector to fit through wire channel
+- Added new style of core pieces for all extruders supported by Mini Stealth
+
+#### 26 Mar 2025
+
+- Added Prusa MK3 x-carriage options
+
+#### 16 Mar 2025
+
+- Added new style of core pieces for the Sherpa Mini mount extruders
 
 #### 6 Feb 2025
 
