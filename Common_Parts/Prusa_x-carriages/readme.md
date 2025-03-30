@@ -24,7 +24,7 @@ This setup should fit most all of the hotends supported by the Mini Stealth. The
 
 - Creality K1
 
-It uses a new, more rigid, set of core pieces that I am still working on. I kept the Prusa geometry and assembly as similar to standard as possible but this design does require eight M3x4x5 heat-set inserts; four to assemble the x-carriage and four to mount the Mini Stealth. It still uses one M3 square nut and an M3 hex nut to secure the stock Prusa cable-holder.
+It uses a new, more rigid, set of core pieces that I have recently developed. I kept the Prusa geometry and assembly as similar to standard as possible but this design does require eight M3x4x5 heat-set inserts; four to assemble the x-carriage and four to mount the Mini Stealth. It still uses one M3 square nut and an M3 hex nut to secure the stock Prusa cable-holder.
 
 ![Heat-Set Inserts 1](Prusa_Heatset_Inserts_Back.png)
 
