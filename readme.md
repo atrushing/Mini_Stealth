@@ -90,7 +90,7 @@ I still need to work up new assembly instructions for this v2 toolhead. For supp
 
 I started working on a [configurator](https://atrushing.github.io/Sidewinder-Switchwire/) for this toolhead but I still have a lot to learn about JavaScript. If anyone would like to help with this, please drop me a message on [TeamFDM](https://www.teamfdm.com/profile/1756-atrushing/).
 
-If you would like to [support](https://paypal.me/atrushing) the development of these mods I would be very grateful.
+If you would like to support the development of these mods I would be very grateful. [<img src="paypal.me.png">](https://paypal.me/atrushing)
 
 ### - - Changelog - -
 
