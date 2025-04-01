@@ -1,8 +1,8 @@
-## Mini Stealth - [Galileo SA](https://github.com/JaredC01/Galileo2/tree/main/galileo2_standalone)
+## Mini Stealth - [Galileo2 SA](https://github.com/JaredC01/Galileo2/tree/main/galileo2_standalone)
 
 This version of the Mini Stealth is modified from the Orbiter 2.0 version.
 
-The Galileo Standalone extruder requires a modified idler arm to fit cleanly inside of the Mini Stealth unless using a Crop-Top version. Their filament advance thumb screw will also collide with a non Crop-Top Mini Stealth.
+The Galileo2 StandAlone extruder requires a modified idler arm to fit cleanly inside of the Mini Stealth unless using a Crop-Top version. Their filament advance thumb screw will also collide with a non Crop-Top Mini Stealth.
 
 ![Mini Stealth Galileo SA](Mini_Stealth_Galileo_SA.png)
 

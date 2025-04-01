@@ -8,7 +8,7 @@ The new design mounts the extruder and hotend to a *[core piece](https://www.tea
 
 | Orbiter 1.5    | Orbiter 2.0                         | Sherpa Mini   | LGX Lite | VzHextrudort |
 | -------------- | ----------------------------------- | ------------- | -------- | ------------ |
-| WristWatch BMG | WristWatch G2SA                     | Sherpa Micro¹ | HGX Lite | Galileo SA   |
+| WristWatch BMG | WristWatch G2SA                     | Sherpa Micro¹ | HGX Lite | Galileo2 SA  |
 | Hummingbird    | ProtoXtruder <small>(v1&v2)</small> | Creality K1   |          |              |
 
 ¹ <small>There is also a mirrored version of the Sherpa Micro that adds a filament release lever on the left side</small>
