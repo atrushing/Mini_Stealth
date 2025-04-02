@@ -24,6 +24,8 @@ This setup should fit the following extruders although some of them are quite ti
 
 - Creality K1
 
+It uses a pair of M3x45 BHCS and a pair of M3x10 BHCS to mount the core to the backplate.
+
 I will try to modify some of my motor-bridge pieces to see if I can get the umbilical PCB mounts to fit better for the extruders that have very low seating stepper motors.
 
 Please leave feedback, positive or negative, here as an issue or over on [TeamFDM.com](https://www.teamfdm.com/forums/topic/3433-mini-stealth-v2-is-available/).
