@@ -28,6 +28,8 @@ It uses a pair of M3x45 BHCS and a pair of M3x10 BHCS to mount the core to the b
 
 This design should fit any of the hotends supported by the Mini Stealth including the UHF variants as well as the Goliath.
 
+There is also a .blend file that is a complete assembly of the ModularDock, shuttle, backplate and toolhead. This is meant for reference and its geometry may not be up to date with the .stl files.
+
 I will try to modify some of my motor-bridge pieces to see if I can get the umbilical PCB mounts to fit better for the extruders that have very low seating stepper motors.
 
 Please leave feedback, positive or negative, here as an issue or over on [TeamFDM.com](https://www.teamfdm.com/forums/topic/3433-mini-stealth-v2-is-available/).
