@@ -94,6 +94,10 @@ If you would like to support the development of these mods I would be very grate
 
 ### - - Changelog - -
 
+#### 6 Apr 2025
+
+- Added StealthChanger backplate and dock in the Common Parts folder
+
 #### 30 Mar 2025
 
 - Modified new core pieces to allow JST connector to fit through wire channel
