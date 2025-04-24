@@ -94,6 +94,10 @@ If you would like to support the development of these mods I would be very grate
 
 ### - - Changelog - -
 
+#### 6 Apr 2025
+
+- Added StealthChanger backplate and dock in the Common Parts folder
+
 #### 30 Mar 2025
 
 - Modified new core pieces to allow JST connector to fit through wire channel
@@ -145,17 +149,13 @@ If you would like to support the development of these mods I would be very grate
 
 - The shroud is now separate from the core.
 
-- The shroud fits onto the core with a pair of sliding grooves and can fit magnets to
-
-- improve the connection as needed.
+- The shroud fits onto the core with a pair of sliding grooves and can fit magnets to improve the connection as needed.
 
 - The hotend can be installed to the core and then mounted to the printers' gantry.
 
 - Everything else can be installed (or removed) while on the printer.
 
-- All core pieces and shrouds are compatible with 25mm or 26mm x-carriages. :: i.e.
-
-- Mini Stealthburner CNC aluminum carriages.
+- All core pieces and shrouds are compatible with 25mm or 26mm x-carriages. :: i.e. Mini Stealthburner CNC aluminum carriages.
 
 - All x-carriages are compatible with any hotend/extruder combination.
 
