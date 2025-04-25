@@ -94,6 +94,10 @@ If you would like to support the development of these mods I would be very grate
 
 ### - - Changelog - -
 
+#### 24 Apr 2025
+
+- Updated DAB design and readme instructions
+
 #### 6 Apr 2025
 
 - Added StealthChanger backplate and dock in the Common Parts folder
