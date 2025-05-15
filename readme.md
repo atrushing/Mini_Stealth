@@ -94,6 +94,14 @@ If you would like to support the development of these mods I would be very grate
 
 ### - - Changelog - -
 
+#### 14 May 2025
+
+- Added rigid x-carriages for MGN12C and MGN12H linear rails
+
+#### 1 May 2025
+
+- Added rigid x-carriages for MGN9C and MGN9H linear rails
+
 #### 24 Apr 2025
 
 - Updated DAB design and readme instructions
