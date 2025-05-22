@@ -16,6 +16,10 @@ There are several different rear boss pieces depending on where you have your X 
 
 ![Rear View](Pictures/Mini_Stealth_DAB_Rear.png)
 
+The flexure works as shown below. The blue center section is fixed to the MGN12H linear carriage. The magenta vertical bars are the intermediate phase and the purple outside frame is the final phase of the flexure. The red bars are the actual flexing parts and are 0.8mm thick.
+
+![Flexure](Pictures/Mini_Stealth_DAB_Flexures_Back.png)
+
 ### Assembly
 
 - After ensuring that the flexure moves freely, install one of the grub 

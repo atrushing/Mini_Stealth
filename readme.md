@@ -13,21 +13,21 @@ The new design mounts the extruder and hotend to a *[core piece](https://www.tea
 
 ¹ <small>There is also a mirrored version of the Sherpa Micro that adds a filament release lever on the left side</small>
 
-There are currently 22 different hotends supported by this toolhead. The cores for the top three in the chart are shared by the others in each group. The bottom nine² hotends each have their own cores.
+There are currently 23 different hotends supported by this toolhead. The cores for the top four in the chart are shared by the others in each group. The bottom nine hotends each have their own cores.
 
-| Slice Mosquito          | Phaetus Rapido                | Phaetus Dragon ST/HF |
-|:-----------------------:|:-----------------------------:|:--------------------:|
-| Mellow NF Crazy Volcano | Phaetus Rapido UHF            | DropEffect neXtG     |
-| Nitram VolcoMosq        | Phaetus Dragon UHF            | Triangle Labs TZ V6  |
-|                         | Triangle Labs T-Vocano Dragon |                      |
-|                         | Triangle Labs CHCB-V V6DM     |                      |
-|                         | DropEffect neXtG UHF          |                      |
-|                         |                               |                      |
-| Phaetus Dragonfly BMO   | Revo Voron                    | Bambu Lab X1         |
-| Phaetus Dragonfly BMS7  | T-Labs Dragon ACE + Goliath   | Creality Spider Pro  |
-| Phaetus Dragonfly BMS6  | Triangle Labs TCHC TD6S       | Dropeffect XG        |
+| Slice Mosquito          | Phaetus Rapido                | Phaetus Dragon ST/HF | T-Labs Dragon ACE |
+|:-----------------------:|:-----------------------------:|:--------------------:|:-----------------:|
+| Mellow NF Crazy Volcano | Phaetus Rapido UHF            | DropEffect neXtG     | Goliath           |
+| Nitram VolcoMosq        | Phaetus Dragon UHF            | Triangle Labs TZ V6  |                   |
+|                         | Triangle Labs T-Vocano Dragon |                      |                   |
+|                         | Triangle Labs CHCB-V V6DM     |                      |                   |
+|                         | DropEffect neXtG UHF          |                      |                   |
+|                         |                               |                      |                   |
+| Phaetus Dragonfly BMO   | Revo Voron                    | Bambu Lab X1         |                   |
+| Phaetus Dragonfly BMS7  | E3D V6 compatible²            | Creality Spider Pro  |                   |
+| Phaetus Dragonfly BMS6  | Triangle Labs TCHC TD6S       | Dropeffect XG        |                   |
 
-² <small>The Goliath hotend is compatibile with the DragonACE core.</small>
+² <small>E3D V6 compatible hotends fit into UHF shrouds and require a clamp secured with 2x M3x10 screws.</small>
 
 Here is an example of how the core and shroud are assembled. There are pockets for 3x6mm magnets. If the magnets aren't seated completly flush, they can prevent the shroud from seating in the correct location.
 
@@ -93,6 +93,10 @@ I started working on a [configurator](https://atrushing.github.io/Sidewinder-Swi
 If you would like to support the development of these mods I would be very grateful. [<img src="paypal.me.png">](https://paypal.me/atrushing)
 
 ### - - Changelog - -
+
+#### 22 May 2025
+
+- Added new cores for E3D V6 compatible hotends (to fit UHF shrouds)
 
 #### 14 May 2025
 
