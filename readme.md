@@ -94,6 +94,31 @@ If you would like to support the development of these mods I would be very grate
 
 ### - - Changelog - -
 
+#### 19 Dec 2025
+
+- Minor geometry improvement for WW-BMG shrouds
+
+#### 16 Nov 2025 
+
+- Added WW BMG remix with Filament Cutter
+
+#### 26 Oct 2025 
+
+- Added x-carriage to fit the Tiny-M printer
+
+#### 25 Sep 2025 
+
+- Added BTT Eddy side-mount variants
+
+#### 3 Sep 2025 
+
+- Added x-frames for Voron Legacy printers
+
+#### 31 May 2025 
+
+- Merge pull request #6 from darkautism/main
+- Add 4040 VSlot support
+
 #### 22 May 2025
 
 - Added new cores for E3D V6 compatible hotends (to fit UHF shrouds)
