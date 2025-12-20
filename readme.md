@@ -94,6 +94,10 @@ If you would like to support the development of these mods I would be very grate
 
 ### - - Changelog - -
 
+#### 20 Dec 2025
+
+- Added WristWatch Orbiter 2.x extruder and Mini Stealth shrouds for it
+
 #### 19 Dec 2025
 
 - Minor geometry improvement for WW-BMG shrouds
