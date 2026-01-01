@@ -6,6 +6,10 @@ This extruder is a bit of a mashup of the WristWatch BMG and G2 extruders. It fi
 
 The Orbiter 2.5 upgrade kit can be used to build this extruder but it does not include the 4x16mm shaft for the idler arm or the tensioner screw/spring combo. The shaft can be replaced with an M4x18 screw but the tensioning screw will have to be sourced seperately. 
 
+There is an optional filament release lever for this extruder which is secured to the back of the idler arm with an M3x8 screw from behind.
+
+![WW BMG FC](WWORB2_with_Release_Lever.jpg)
+
 ### Side Mounted Filament Cutter
 
 ![WW BMG FC](WristWatch_Orbiter-2.x_render.png)
