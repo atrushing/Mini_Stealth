@@ -13,7 +13,7 @@ The new design mounts the extruder and hotend to a *[core piece](https://www.tea
 
 ¹ <small>There is also a mirrored version of the Sherpa Micro that adds a filament release lever on the left side</small>
 
-There are currently 23 different hotends supported by this toolhead. The cores for the top four in the chart are shared by the others in each group. The bottom nine hotends each have their own cores.
+There are currently 24 different hotends supported by this toolhead. The cores for the top four in the chart are shared by the others in each group. The bottom ten hotends each have their own cores.
 
 | Slice Mosquito          | Phaetus Rapido                | Phaetus Dragon ST/HF | T-Labs Dragon ACE |
 |:-----------------------:|:-----------------------------:|:--------------------:|:-----------------:|
@@ -23,7 +23,7 @@ There are currently 23 different hotends supported by this toolhead. The cores f
 |                         | Triangle Labs CHCB-V V6DM     |                      |                   |
 |                         | DropEffect neXtG UHF          |                      |                   |
 |                         |                               |                      |                   |
-| Phaetus Dragonfly BMO   | Revo Voron                    | Bambu Lab X1         |                   |
+| Phaetus Dragonfly BMO   | Revo Voron                    | Bambu Lab X1         |  Creality K1      |
 | Phaetus Dragonfly BMS7  | E3D V6 compatible²            | Creality Spider Pro  |                   |
 | Phaetus Dragonfly BMS6  | Triangle Labs TCHC TD6S       | Dropeffect XG        |                   |
 
