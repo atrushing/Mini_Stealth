@@ -4,6 +4,8 @@ Support for the TriangleLab TBG-Lite extruder (Right-hand version) on the
 Mini Stealth toolhead. Fit-verified on a Voron V0.2 with a Dragonfly BMO
 hotend and a KNOMI V2 display.
 
+![verified build](images/verified_build.jpg)
+
 The TBG-Lite is Sherpa-style but larger: 43.5mm wide x 48.9mm tall body,
 LDO-36STH17 round pancake motor (same flange as LGX-Lite), a 3-screw
 mounting triangle unique to this extruder, and a full right-side door that
@@ -31,12 +33,14 @@ swings open (top-down, to the right) on a tension thumbscrew.
 
 ## Mounting plate
 
-- 3x **M3x10 BUTTON head** (BHCS) from below through the plate into the
-  TBG-Lite base (the extruder's own inserts). Both parts of that spec are
-  load-bearing, verified on hardware: **socket cap heads are too tall for
-  the ~2mm wire channels under the plate and jack it off the core** (button
-  heads sit within the channel depth), and x8 leaves too little engagement
-  — use x10.
+- Extruder side: 3x **M3 socket head** from below through the plate into
+  the TBG-Lite base's own inserts (M3x8; if the rib-zone hole feels short
+  on engagement, M3x10).
+- Core side: 2x **M3x10 BUTTON head** down through the plate's ear holes
+  into the core's heat-set inserts. **Button heads are required here,
+  verified on hardware**: the TBG-Lite body (43.5mm wide) overhangs to
+  within ~0.3mm of the ear holes, so taller socket cap heads foul the
+  extruder's underside and the stack will not seat.
 - **Orientation matters and is self-enforcing**: the FLAT face of the plate
   goes against the extruder base; the stepped/ribbed face goes down toward
   the core. The rib + ear bosses are the core contact patches; the recessed
@@ -78,14 +82,6 @@ mirrors the motor and door sides, which needs a mirrored shroud — and the
 core's front mounting-pilot pattern is not symmetric, so a simple mirror
 does not mate. Left-hand support needs work in the source assembly; the
 plate alone is not sufficient. Untested.
-
-## Known issue in the provided shroud STL (fix incoming)
-
-The hood-raise operation stretched the logo/LED-slot geometry on the front
-face (the engraved features span the stretch line) — cosmetic, and it breaks
-the logo LED backlight capability. A corrected STL that keeps the logo/LED
-cluster rigid is in progress; the regeneration numbers above are unaffected
-(regenerating in source avoids the issue entirely).
 
 ## Fit notes from the verified build
 
