@@ -31,10 +31,12 @@ swings open (top-down, to the right) on a tension thumbscrew.
 
 ## Mounting plate
 
-- 3x **M3x8 BHCS** from below through the plate into the TBG-Lite base
-  (the extruder's own inserts). Two screws pass through 3mm plate sections,
-  one through the 5mm rib — if the rib-zone screw feels short on thread
-  engagement, use M3x10 there.
+- 3x **M3x10 BUTTON head** (BHCS) from below through the plate into the
+  TBG-Lite base (the extruder's own inserts). Both parts of that spec are
+  load-bearing, verified on hardware: **socket cap heads are too tall for
+  the ~2mm wire channels under the plate and jack it off the core** (button
+  heads sit within the channel depth), and x8 leaves too little engagement
+  — use x10.
 - **Orientation matters and is self-enforcing**: the FLAT face of the plate
   goes against the extruder base; the stepped/ribbed face goes down toward
   the core. The rib + ear bosses are the core contact patches; the recessed
@@ -76,6 +78,14 @@ mirrors the motor and door sides, which needs a mirrored shroud — and the
 core's front mounting-pilot pattern is not symmetric, so a simple mirror
 does not mate. Left-hand support needs work in the source assembly; the
 plate alone is not sufficient. Untested.
+
+## Known issue in the provided shroud STL (fix incoming)
+
+The hood-raise operation stretched the logo/LED-slot geometry on the front
+face (the engraved features span the stretch line) — cosmetic, and it breaks
+the logo LED backlight capability. A corrected STL that keeps the logo/LED
+cluster rigid is in progress; the regeneration numbers above are unaffected
+(regenerating in source avoids the issue entirely).
 
 ## Fit notes from the verified build
 
