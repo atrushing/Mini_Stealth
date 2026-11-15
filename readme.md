@@ -4,16 +4,16 @@
 
 This is the Version 2 release of the Mini Stealth toolhead. It is about 5/8 the size of the official Stealthburner and weighs considerably less. It uses a pair of 4010 blowers for part cooling and a 3010/2510 fan for the hotend. The blowers use glued in [air guides](https://www.teamfdm.com/forums/topic/1886-vorpal-180-a-printed-printer/?do=findComment&comment=13431&_rid=1756) to increase airflow by [about 20%](https://www.teamfdm.com/forums/topic/1886-vorpal-180-a-printed-printer/?do=findComment&comment=13566&_rid=1756) compared to the Mini Stealth v1. This toolhead was entirely designed in ![Blender](blender_icon_16x16.png) Blender and I only have mesh files available.
 
-The new design mounts the extruder and hotend to a *[core piece](https://www.teamfdm.com/forums/topic/1886-vorpal-180-a-printed-printer/?do=findComment&comment=15428&_rid=1756)* and mounts the blowers, hotend fan and LEDs into the *shroud* that slides onto the core. This makes assembly and maintenance much easier and the extruder can be fully removed while the core remains installed on the printer. There are thirteen extruders supported by the Mini Stealth.
+The new design mounts the extruder and hotend to a *[core piece](https://www.teamfdm.com/forums/topic/1886-vorpal-180-a-printed-printer/?do=findComment&comment=15428&_rid=1756)* and mounts the blowers, hotend fan and LEDs into the *shroud* that slides onto the core. This makes assembly and maintenance much easier and the extruder can be fully removed while the core remains installed on the printer. There are fourteen extruders supported by the Mini Stealth.
 
 | Orbiter 1.5    | Orbiter 2.0                         | Sherpa Mini   | LGX Lite | VzHextrudort |
 | -------------- | ----------------------------------- | ------------- | -------- | ------------ |
 | WristWatch BMG | WristWatch G2SA                     | Sherpa Micro¹ | HGX Lite | Galileo2 SA  |
-| Hummingbird    | ProtoXtruder <small>(v1&v2)</small> | Creality K1   |          |              |
+| Hummingbird    | ProtoXtruder <small>(v1&v2)</small> | Creality K1   |          | WristWatch Orb2.x |
 
 ¹ <small>There is also a mirrored version of the Sherpa Micro that adds a filament release lever on the left side</small>
 
-There are currently 24 different hotends supported by this toolhead. The cores for the top four in the chart are shared by the others in each group. The bottom ten hotends each have their own cores.
+There are currently 25 different hotends supported by this toolhead. The cores for the top four in the chart are shared by the others in each group. The bottom ten hotends each have their own cores.
 
 | Slice Mosquito          | Phaetus Rapido                | Phaetus Dragon ST/HF | T-Labs Dragon ACE |
 |:-----------------------:|:-----------------------------:|:--------------------:|:-----------------:|
@@ -25,7 +25,7 @@ There are currently 24 different hotends supported by this toolhead. The cores f
 |                         |                               |                      |                   |
 | Phaetus Dragonfly BMO   | Revo Voron                    | Bambu Lab X1         |  Creality K1      |
 | Phaetus Dragonfly BMS7  | E3D V6 compatible²            | Creality Spider Pro  |                   |
-| Phaetus Dragonfly BMS6  | Triangle Labs TCHC TD6S       | Dropeffect XG        |                   |
+| Phaetus Dragonfly BMS6  | Triangle Labs TCHC TD6S       |    Ancufy CHC-V6    |Dropeffect XG |
 
 ² <small>E3D V6 compatible hotends fit into UHF shrouds and require a clamp secured with 2x M3x10 screws.</small>
 
@@ -93,6 +93,39 @@ I started working on a [configurator](https://atrushing.github.io/Sidewinder-Swi
 If you would like to support the development of these mods I would be very grateful. [<img src="paypal.me.png">](https://paypal.me/atrushing)
 
 ### - - Changelog - -
+
+#### 29 Sep 2026
+
+- Create WW_BMG_Main_Body_ECAS_withCutter.stl
+- Added Mini_Stealth_v2.blend.torrent of the source .blend file
+
+#### 15 Jun 2026
+
+- Added spacer for Biqu MicroProbe v2 and new Sovol SV06 x-carriage for UHF hotends
+
+#### 27 May 2026
+
+- Create StealthBurnerCNC-or-TAP_Adaptor_Plate.stl
+
+#### 4 Apr 2026
+
+- Create CrealityK1_Mounting_Adaptor_Plate_v2.stl
+
+#### 15 Mar 2026
+
+- Update Hummingbird_Back_ATR.stl
+
+#### 6 Mar 2026
+
+- Added PC4M6 and ECAS versions of Hummingbird mod
+
+#### 23 Feb 2026
+
+- Added x-carriage for Sovol SV-06
+
+#### 12 Feb 2026
+
+- Added XY_Joint_Upper pieces for Tulip Gantry
 
 #### 20 Dec 2025
 

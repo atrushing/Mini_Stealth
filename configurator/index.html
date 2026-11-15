@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Stealth Configurator</title>
+<style>
+  :root {
+    --bg: #1a1a2e;
+    --surface: #16213e;
+    --accent: #0f3460;
+    --highlight: #e94560;
+    --text: #eaeaea;
+    --text-dim: #a0a0b0;
+    --success: #4ecca3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  h1 { margin-bottom: 0.5rem; font-size: 1.8rem; }
+  .subtitle { color: var(--text-dim); margin-bottom: 2rem; }
+  .config-group {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .config-group h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--highlight);
+    margin-bottom: 1rem;
+  }
+  select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--accent);
+    color: var(--text);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23eaeaea' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+  select:focus { outline: none; border-color: var(--highlight); }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .chip {
+    padding: 0.5rem 1rem;
+    background: var(--accent);
+    border: 2px solid transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  .chip:hover { border-color: var(--highlight); }
+  .chip.active {
+    background: var(--highlight);
+    color: #fff;
+    border-color: var(--highlight);
+  }
+  .results {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+  .results h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--success);
+    margin-bottom: 1rem;
+  }
+  .file-list { list-style: none; }
+  .file-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .file-list li:last-child { border-bottom: none; }
+  .file-list a {
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.85rem;
+  }
+  .file-list a:hover { color: var(--highlight); }
+  .file-list .size {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    margin-left: 1rem;
+  }
+  .download-all {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.6rem 1.5rem;
+    background: var(--success);
+    color: var(--bg);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .download-all:hover { opacity: 0.9; }
+  .empty {
+    color: var(--text-dim);
+    font-style: italic;
+    padding: 1rem 0;
+  }
+  .category-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>Mini Stealth v2 Configurator</h1>
+<p class="subtitle">Select your components to get the right .stl files.</p>
+
+<div class="config-group">
+  <h2>Extruder</h2>
+  <select id="extruder"></select>
+</div>
+
+<div class="config-group">
+  <h2>Hotend</h2>
+  <select id="hotend"></select>
+</div>
+
+<div class="config-group">
+  <h2>Shroud Variant</h2>
+  <div class="chips" id="shroud-variants"></div>
+</div>
+
+<div class="config-group">
+  <h2>Hotend Fan</h2>
+  <div class="chips" id="fan-type"></div>
+</div>
+
+<div class="config-group">
+  <h2>X-Carriage / Printer</h2>
+  <div class="chips" id="x-carriage"></div>
+</div>
+
+<div class="results" id="results">
+  <h2>Your Parts</h2>
+  <p class="empty">Make a selection above to see your file list.</p>
+</div>
+
+<script>
+// ─── DATA MODEL ───────────────────────────────────────────────────────────────
+// This is the heart of the configurator. Each entry maps to actual file paths
+// in the GitHub repo. Update the `files` arrays as you add new parts.
+
+const REPO_BASE = "https://raw.githubusercontent.com/atrushing/Mini_Stealth/main";
+
+const EXTRUDERS = {
+  "Orbiter 1.5": {
+    folder: "Extruders/Orbiter_1.5",
+    coreGroup: "Orb1.5",  // which core piece set
+    shroudPrefix: "Orb1.5",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "Orbiter 2.0": {
+    folder: "Extruders/Orbiter_2.0",
+    coreGroup: "Orb2.0",
+    shroudPrefix: "Orb2.0",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "Orbiter 2.0 with Filament Sensor": {
+    folder: "Extruders/Orbiter_2.0_Filament_Sensor",
+    coreGroup: "Orb2.0",
+    shroudPrefix: "Orb2.0_FS",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "Sherpa Mini": {
+    folder: "Extruders/Sherpa_Mini",
+    coreGroup: "SherpaMini",
+    shroudPrefix: "SherpaMini",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "Sherpa Micro": {
+    folder: "Extruders/Sherpa_Micro",
+    coreGroup: "SherpaMicro",
+    shroudPrefix: "SherpaMicro",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "Sherpa Micro Mirrored": {
+    folder: "Extruders/Sherpa_Micro_Mirrored",
+    coreGroup: "SherpaMicro_Mirrored",
+    shroudPrefix: "SherpaMicro_Mirrored",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "LGX Lite": {
+    folder: "Extruders/LGX_Lite",
+    coreGroup: "LGX",
+    shroudPrefix: "LGX",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "VzHextrudort": {
+    folder: "Extruders/VzHextrudort",
+    coreGroup: "LGX",
+    shroudPrefix: "VzHEX",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "WristWatch BMG": {
+    folder: "Extruders/WristWatch_BMG",
+    coreGroup: "Orb2.0",
+    shroudPrefix: "WWBMG",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "WristWatch G2SA": {
+    folder: "Extruders/WristWatch_G2SA",
+    coreGroup: "Orb2.0",
+    shroudPrefix: "WWG2SA",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "WristWatch Orbiter2.x": {
+    folder: "Extruders/WristWatch_ORB2x",
+    coreGroup: "Orb2.0",
+    shroudPrefix: "WWORB2",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "HGX Lite": {
+    folder: "Extruders/HGX_Lite",
+    coreGroup: "LGX",
+    shroudPrefix: "HGX",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "Galileo2 SA": {
+    folder: "Extruders/Galileo2_SA",
+    coreGroup: "Orb2.0",
+    shroudPrefix: "GalileoSA",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "Hummingbird": {
+    folder: "Extruders/Hummingbird",
+    coreGroup: "LGX",
+    shroudPrefix: "Hummingbird",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "ProtoXtruder": {
+    folder: "Extruders/ProtoXtruder",
+    coreGroup: "SherpaMini",
+    shroudPrefix: "ProtoXtruder",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  },
+  "Creality K1": {
+    folder: "Extruders/Creality_K1",
+    coreGroup: "LGX",
+    shroudPrefix: "CrealityK1",
+    hotends: [
+      "Revo Voron", "Phaetus Dragon ST/HF", "Phaetus Dragon UHF",
+      "Phaetus Dragonfly BMO", "Phaetus Dragonfly BMS6",
+      "Phaetus Dragonfly BMS7", "Phaetus Rapido", "Phaetus Rapido UHF",
+      "Slice Mosquito", "Nitram VolcoMosq", "Triangle Labs TZ V6",
+      "Triangle Labs T-Vocano Dragon", "Triangle Labs CHCB-V V6DM",
+      "Triangle Labs TCHC TD6S", "Ancufy Store CHC-V6",
+      "Triangle Labs Dragon ACE", "Mellow NF Crazy Volcano",
+      "DropEffect neXtG", "DropEffect neXtG UHF", "DropEffect XG",
+      "Bambu Lab X1", "Creality K1", "Creality Spider Pro",
+      "E3D V6 compatible", "Goliath"
+    ]
+  }
+};
+
+const SHROUD_VARIANTS = [
+  { id: "basic", label: "Basic" },
+  { id: "zeroclick", label: "ZeroClick" },
+  { id: "probe_left", label: "Probe (Left)" },
+  { id: "probe_right", label: "Probe (Right)" }
+];
+
+const FAN_TYPES = [
+  { id: "3010", label: "3010" },
+  { id: "2510", label: "2510" }
+];
+
+const X_CARRIAGES = [
+  { id: "v0.1", label: "V0.1" },
+  { id: "v0.2", label: "V0.2" },
+  { id: "v2.4", label: "V2.4" },
+  { id: "trident", label: "Trident" },
+  { id: "switchwire", label: "Switchwire" },
+  { id: "dab", label: "DAB" }
+];
+
+// ─── FILE RESOLUTION ──────────────────────────────────────────────────────────
+// This is where you map (extruder, hotend, shroud, fan, carriage) → file list.
+// The naming convention in your repo uses prefixes like:
+//   [b]_MiniStealth_Core_{coreGroup}_{hotendCode}.stl
+//   [a]_MiniStealth_Shroud_{shroudPrefix}_{variant}_{fan}.stl
+//   x_frame_{carriage}_{probe}_left/right.stl
+//
+// ⚠️  YOU WILL NEED TO VERIFY/ADJUST these filename patterns to match
+//     your actual .stl filenames. This is the "naming consistency"
+//     problem you mentioned on the forum.
+
+const HOTEND_CODES = {
+  "Revo Voron": "Revo",
+  "Phaetus Dragon ST/HF": "Dragon",
+  "Phaetus Dragon UHF": "Rapido",
+  "Phaetus Dragonfly BMO": "BMO",
+  "Phaetus Dragonfly BMS6": "BMS6",
+  "Phaetus Dragonfly BMS7": "BMS7",
+  "Phaetus Rapido": "Rapido",
+  "Phaetus Rapido UHF": "Rapido",
+  "Slice Mosquito": "Mosq",
+  "Nitram VolcoMosq": "Mosq",
+  "Triangle Labs TZ V6": "Dragon",
+  "Triangle Labs T-Vocano Dragon": "Rapido",
+  "Triangle Labs CHCB-V V6DM": "Rapido",
+  "Triangle Labs TCHC TD6S": "TD6S",
+  "Ancufy Store CHC-V6": "TD6S",
+  "Triangle Labs Dragon ACE": "ACE",
+  "Mellow NF Crazy Volcano": "Mosq",
+  "DropEffect neXtG": "Dragon",
+  "DropEffect neXtG UHF": "Rapido",
+  "DropEffect XG": "XG",
+  "Bambu Lab X1": "Bambu",
+  "Creality K1": "K1",
+  "Creality Spider Pro": "Spider",
+  "E3D V6 compatible": "V6",
+  "Goliath": "Goliath"
+};
+
+function resolveFiles(extruderName, hotendName, shroudVariant, fanType, carriage) {
+  const extruder = EXTRUDERS[extruderName];
+  if (!extruder) return [];
+
+  const files = [];
+  const base = extruder.folder;
+  const heCode = HOTEND_CODES[hotendName] || hotendName;
+  const coreGroup = extruder.coreGroup;
+  const shroudPrefix = extruder.shroudPrefix;
+
+  // Core piece
+  files.push({
+    category: "Core",
+    name: `MiniStealth_Core_${coreGroup}_${heCode}.stl`,
+    path: `${base}/MiniStealth_Core_${coreGroup}_${heCode}.stl`
+  });
+
+  // Shroud
+  const variantSuffix = {
+    "basic": "",
+    "zeroclick": "ZeroClick",
+    "probe_left": "ProbeLeft",
+    "probe_right": "ProbeRight"
+  }[shroudVariant];
+
+  const fanSuffix = fanType === "2510" ? "_2510" : "";
+  const shroudName = `[a]_MiniStealth_Shroud_${shroudPrefix}${variantSuffix ? "_" + variantSuffix : ""}${fanSuffix}.stl`;
+  files.push({
+    category: "Shroud",
+    name: shroudName,
+    path: `${base}/${shroudName}`
+  });
+
+  // X-Carriage
+  const carriageNames = {
+    "v0.1": "V01",
+    "v0.2": "V02",
+    "v2.4": "V24",
+    "trident": "Trident",
+    "switchwire": "Switchwire",
+    "dab": "DAB"
+  };
+  const carrName = carriageNames[carriage];
+  files.push({
+    category: "X-Carriage",
+    name: `x_carriage_${carrName}.stl`,
+    path: `Common_Parts/x_carriage_${carrName}.stl`
+  });
+
+  // Common parts (LED, diffuser, etc.) — adjust as needed
+  files.push({
+    category: "Common",
+    name: "LED_Carrier.stl",
+    path: "Common_Parts/LED_Carrier.stl"
+  });
+  files.push({
+    category: "Common",
+    name: "LED_Diffuser.stl",
+    path: "Common_Parts/LED_Diffuser.stl"
+  });
+  files.push({
+    category: "Common",
+    name: "Blower_guide_x2.stl",
+    path: "Common_Parts/Blower_guide_x2.stl"
+  });
+  files.push({
+    category: "Common",
+    name: "Blower_guide_gluing_tool_M3x20.stl",
+    path: "Common_Parts/Blower_guide_gluing_tool_M3x20.stl"
+  });
+
+  return files;
+}
+
+// ─── UI LOGIC ─────────────────────────────────────────────────────────────────
+
+const state = {
+  extruder: null,
+  hotend: null,
+  shroud: "basic",
+  fan: "3010",
+  carriage: "v0.2"
+};
+
+function init() {
+  const extruderSelect = document.getElementById("extruder");
+  const hotendSelect = document.getElementById("hotend");
+
+  // Populate extruders
+  Object.keys(EXTRUDERS).forEach(name => {
+    const opt = document.createElement("option");
+    opt.value = name;
+    opt.textContent = name;
+    extruderSelect.appendChild(opt);
+  });
+
+  extruderSelect.addEventListener("change", () => {
+    state.extruder = extruderSelect.value;
+    populateHotends();
+    render();
+  });
+
+  hotendSelect.addEventListener("change", () => {
+    state.hotend = hotendSelect.value;
+    render();
+  });
+
+  // Chip groups
+  makeChips("shroud-variants", SHROUD_VARIANTS, "shroud");
+  makeChips("fan-type", FAN_TYPES, "fan");
+  makeChips("x-carriage", X_CARRIAGES, "carriage");
+
+  // Default selection
+  extruderSelect.value = Object.keys(EXTRUDERS)[0];
+  state.extruder = extruderSelect.value;
+  populateHotends();
+  hotendSelect.value = EXTRUDERS[state.extruder].hotends[0];
+  state.hotend = hotendSelect.value;
+  render();
+}
+
+function populateHotends() {
+  const hotendSelect = document.getElementById("hotend");
+  hotendSelect.innerHTML = "";
+  const available = EXTRUDERS[state.extruder]?.hotends || [];
+  available.forEach(name => {
+    const opt = document.createElement("option");
+    opt.value = name;
+    opt.textContent = name;
+    hotendSelect.appendChild(opt);
+  });
+  if (available.length > 0) {
+    state.hotend = available[0];
+    hotendSelect.value = state.hotend;
+  }
+}
+
+function makeChips(containerId, items, stateKey) {
+  const container = document.getElementById(containerId);
+  items.forEach(item => {
+    const chip = document.createElement("span");
+    chip.className = "chip" + (state[stateKey] === item.id ? " active" : "");
+    chip.textContent = item.label;
+    chip.addEventListener("click", () => {
+      state[stateKey] = item.id;
+      container.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+      chip.classList.add("active");
+      render();
+    });
+    container.appendChild(chip);
+  });
+}
+
+function render() {
+  const results = document.getElementById("results");
+  if (!state.extruder || !state.hotend) {
+    results.innerHTML = `<h2>Your Parts</h2><p class="empty">Make a selection above.</p>`;
+    return;
+  }
+
+  const files = resolveFiles(state.extruder, state.hotend, state.shroud, state.fan, state.carriage);
+
+  // Group by category
+  const groups = {};
+  files.forEach(f => {
+    if (!groups[f.category]) groups[f.category] = [];
+    groups[f.category].push(f);
+  });
+
+  let html = `<h2>Your Parts <span style="color:var(--text-dim);font-weight:400">(${files.length} files)</span></h2>`;
+
+  for (const [cat, catFiles] of Object.entries(groups)) {
+    html += `<p class="category-label">${cat}</p><ul class="file-list">`;
+    catFiles.forEach(f => {
+      const url = `${REPO_BASE}/${f.path}`;
+      html += `<li><a href="${url}" target="_blank">${f.name}</a></li>`;
+    });
+    html += `</ul>`;
+  }
+
+  html += `<a class="download-all" href="#" onclick="alert('ZIP download coming soon — for now, download individually or use the GitHub folder view.')" >📦 Download All (ZIP)</a>`;
+  results.innerHTML = html;
+}
+
+init();
+</script>
+</body>
+</html>
