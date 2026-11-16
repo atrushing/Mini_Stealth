@@ -473,6 +473,22 @@ const X_CARRIAGES = [
   { id: "dab", label: "DAB" }
 ];
 
+const PROBES = [
+  { id: "None", label: "" },
+  { id: "Omron", label: "Omron" },
+  { id: "Klicky", label: "Omron" },
+  { id: "BL-Touch", label: "Omron" },
+  { id: "MicroProbe", label: "MicroProbe" },
+  { id: "Euclid", label: "Euclid" },
+  { id: "Beacon3D", label: "Beacon3D" },
+  { id: "Cartographer", label: "Beacon3D" },
+  { id: "PINDA", label: "PINDA" },
+  { id: "Differential IR", label: "DiffIR" },
+  { id: "Mini Stealth DAB", label: "DAB" },
+];
+
+
+
 // ─── FILE RESOLUTION ──────────────────────────────────────────────────────────
 // This is where you map (extruder, hotend, shroud, fan, carriage) → file list.
 // The naming convention in your repo uses prefixes like:
@@ -509,7 +525,25 @@ const HOTEND_CODES = {
   "Creality K1": "K1",
   "Creality Spider Pro": "Spider",
   "E3D V6 compatible": "V6",
-  "Goliath": "Goliath"
+  "Goliath": "ACE",
+};
+
+const CABLECHAIN = {
+  "None": "",
+  "twoHole": "2hole",
+  "threeHole": "3hole",
+};
+
+const DISPLAY = {
+  "None": "",
+  "Knomi": "Knomi",
+  "Knomi2": "Knomi2",
+  "MellowFlyHalo": "Knomi2",
+};
+
+const STATUSLED = {
+  "Neopixel": "Status_LED_carrier.stl",
+  "RainbowBarf": "Rainbow_Barf_LED_carrier.stl",
 };
 
 function resolveFiles(extruderName, hotendName, shroudVariant, fanType, carriage) {
