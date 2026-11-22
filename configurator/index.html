@@ -10,330 +10,187 @@
     --surface: #16213e;
     --card: #0f3460;
     --card-hover: #1a4a7a;
-    --card-selected: #e94560;
+    /*--card-selected: #e94560; */ /* magenta */
+    --card-selected: #c1e9454d;  /* green */
+    /*--card-selected: #e1894ab3; /* orange */
     --text: #eaeaea;
     --text-muted: #a0a0b0;
-    --accent: #e94560;
+    /*--accent: #e94560; */ /* magenta */
+    --accent: #c1e945a1;  /* green */
+    /*--accent: #e99145f2; /* orange */
     --border: #2a2a4a;
+    --file-bg: #0a0a1a;
+    --file-text: #7ec8e3;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     font-family: 'Segoe UI', system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
-    max-width: 860px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 1.5rem 1rem 4rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
   }
+  #sections { flex: 1; }
+  h1 { text-align: center; font-size: 1.6rem; margin-bottom: .5rem; }
+  #header { text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-size: .95rem; }
 
-  h1 {
-    text-align: center;
-    font-size: 1.6rem;
-    margin-bottom: .5rem;
-  }
-
-  #header {
-    text-align: center;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-    font-size: .95rem;
-  }
-
-  /* ---------- Section layout ---------- */
   .section {
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.5rem;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 1.2rem 1.4rem;
   }
-
   .section h2 {
-    font-size: 1.05rem;
-    margin-bottom: .8rem;
+    font-size: 1rem;
+    margin-bottom: .7rem;
     color: var(--accent);
     text-transform: uppercase;
     letter-spacing: .04em;
   }
-
-  /* ---------- Option cards ---------- */
-  .options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-  }
-
+  .options { display: flex; flex-wrap: wrap; gap: .5rem; }
   .opt {
     padding: .55em 1em;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 6px;
     cursor: pointer;
-    font-size: .9rem;
+    font-size: .88rem;
     transition: background .15s, border-color .15s, transform .1s;
     user-select: none;
   }
-
-  .opt:hover {
-    background: var(--card-hover);
-    transform: translateY(-1px);
-  }
-
-  .opt.selected {
-    background: var(--card-selected);
-    border-color: var(--card-selected);
-    color: #fff;
-  }
-
-  /* ---------- Utility ---------- */
+  .opt:hover { background: var(--card-hover); transform: translateY(-1px); }
+  .opt.selected { background: var(--card-selected); border-color: var(--card-selected); color: #fff; }
+  .opt.disabled { opacity: .35; pointer-events: none; }
   .hidden { display: none !important; }
 
-  /* ---------- Core file display ---------- */
-  .core-display {
-    margin-top: .8rem;
-    padding: .7rem 1rem;
-    background: #0a0a1a;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-family: 'Consolas', 'Courier New', monospace;
-    font-size: .85rem;
-    color: #7ec8e3;
-    word-break: break-all;
-  }
+  .sub-label { font-size: .78rem; color: var(--text-muted); margin: .5rem 0 .3rem; }
 
-  /* ---------- Status bar ---------- */
-  #text {
-    margin-top: 2rem;
-    padding: 1rem 1.4rem;
+  /* Preview panel */
+  #preview-panel {
+    position: sticky;
+    top: 1rem;
+    width: 220px;
+    min-height: 260px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: .88rem;
-    font-family: 'Consolas', monospace;
-    white-space: pre-wrap;
-    color: var(--text-muted);
+    border-radius: 10px;
+    padding: .8rem;
+    text-align: center;
+    flex-shrink: 0;
   }
+  #preview-img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+  #preview-label { margin-top: .5rem; font-size: .8rem; color: var(--text-muted); }
 
-  /* ---------- Sub-group labels ---------- */
-  .sub-label {
-    font-size: .8rem;
-    color: var(--text-muted);
-    margin: .6rem 0 .3rem;
+  /* File list output */
+  #filelist {
+    margin-top: 2rem;
+    padding: 1.2rem 1.4rem;
+    background: var(--file-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: .84rem;
+    color: var(--file-text);
+    white-space: pre-wrap;
+    word-break: break-all;
+    line-height: 1.6;
+  }
+  #filelist h3 { color: var(--text); margin-bottom: .6rem; font-family: inherit; font-size: .95rem; }
+  #filelist .cat { color: #f0c040; font-weight: bold; }
+
+  @media (max-width: 768px) {
+    body { flex-direction: column; }
+    #preview-panel { position: static; width: 100%; min-height: auto; }
   }
 </style>
 </head>
 <body>
 
-<h1>Mini Stealth Configurator</h1>
-<p id="header">Select your printer and then work your way down the page.</p>
+<div id="sections">
+  <h1>Mini Stealth Configurator</h1>
+  <p id="header">Select your printer and work your way down the page.</p>
 
-<!-- ===== SECTION 01: Printer ===== -->
-<div class="section">
-  <h2>01 · Printer</h2>
-  <div class="options">
-    <div class="opt" id="printer1">Voron V0.1</div>
-    <div class="opt" id="printer2">Voron V0.2</div>
-    <div class="opt" id="printer3">Voron V2.4</div>
-    <div class="opt" id="printer4">Voron Trident</div>
-    <div class="opt" id="printer5">Voron Switchwire</div>
-    <div class="opt" id="printer6">Voron Legacy</div>
-    <div class="opt" id="printer7">PforAnts Micron</div>
-    <div class="opt" id="printer7">Sovol SV06</div>
-    <div class="opt" id="printer8">Prusa Mk3</div>
-    <div class="opt" id="printer9">Tiny M</div>
-    <div class="opt" id="printer10">Ender 3</div>
-    <div class="opt" id="printer11">Generic Rigid Mount</div>
+  <!-- 01: Printer -->
+  <div class="section" id="sec-printer">
+    <h2>Printer</h2>
+    <div class="options" id="opt-printer"></div>
   </div>
+
+  <!-- 02: X-Carriage / Rail -->
+  <div class="section hidden" id="sec-carriage">
+    <h2>X-Carriage</h2>
+    <div class="options" id="opt-carriage"></div>
+    <p class="sub-label hidden" id="carriage-note"></p>
+  </div>
+
+  <!-- 04: Hotend -->
+  <div class="section" id="sec-hotend">
+    <h2>Hotend</h2>
+    <div class="options" id="opt-hotend"></div>
+  </div>
+
+  <!-- 07: Probe -->
+  <div class="section hidden" id="sec-probe">
+    <h2>Probe</h2>
+    <div class="options" id="opt-probe"></div>
+  </div>
+
+  <!-- 07b: Probe Bracket (sub-selection) -->
+  <div class="section hidden" id="sec-probebracket">
+    <h2>Probe Bracket</h2>
+    <div class="options" id="opt-probebracket"></div>
+  </div>
+
+  <!-- 03: Extruder -->
+  <div class="section" id="sec-extruder">
+    <h2>Extruder</h2>
+    <div class="options" id="opt-extruder"></div>
+  </div>
+
+  <!-- 08: Motor Bridge -->
+  <div class="section hidden" id="sec-bridge">
+    <h2>Motor Bridge</h2>
+    <div class="options" id="opt-bridge"></div>
+    <div class="options hidden" id="opt-chainholes" style="margin-top:.5rem"></div>
+  </div>
+
+  <!-- 05: Shroud -->
+  <div class="section hidden" id="sec-shroud">
+    <h2>Shroud</h2>
+    <div class="options" id="opt-shroud"></div>
+  </div>
+
+  <!-- 06: Fan -->
+  <div class="section hidden" id="sec-fan">
+    <h2>Hotend Fan</h2>
+    <div class="options" id="opt-fan"></div>
+  </div>
+
+  <!-- 09: LED -->
+  <div class="section hidden" id="sec-led">
+    <h2>Status LED</h2>
+    <div class="options" id="opt-led"></div>
+  </div>
+
+  <!-- File List Output -->
+  <div id="filelist" class="hidden"></div>
 </div>
 
-<!-- ===== SECTION 02: Linear Rails ===== -->
-<div class="section hidden" id="linearRails1">
-  <h2>02 · Linear Rails</h2>
-  <div class="options">
-    <div class="opt" id="linear1">MGN7</div>
-    <div class="opt" id="linear2">MGN9</div>
-  </div>
+<!-- Preview Panel -->
+<div id="preview-panel">
+  <img id="preview-img" src="" alt="" style="display:none">
+  <p id="preview-label">Hover over an option<br>to preview</p>
 </div>
-
-<!-- ===== SECTION 03: X Endstop ===== -->
-<div class="section hidden" id="xstop">
-  <h2>03 · X Endstop</h2>
-  <div class="options">
-    <div class="opt" id="xstop1">Original</div>
-    <div class="opt" id="xstop2">Sensorless</div>
-  </div>
-</div>
-
-<!-- ===== SECTION 04: Extruder ===== -->
-<div class="section">
-  <h2>04 · Extruder</h2>
-  <div class="options">
-    <div class="opt" id="extruder1">Orbiter 1.5</div>
-    <div class="opt" id="extruder2">Orbiter 2.0</div>
-    <div class="opt" id="extruder3">Orbiter 2.0 with Filament Sensor</div>
-    <div class="opt" id="extruder4">Galileo 2 SA</div>
-    <div class="opt" id="extruder5">WristWatch BMG</div>
-    <div class="opt" id="extruder6">WristWatch G2SA</div>
-    <div class="opt" id="extruder7">WristWatch Orb2.0</div>
-    <div class="opt" id="extruder8">LGX Lite</div>
-    <div class="opt" id="extruder9">Hummingbird</div>
-    <div class="opt" id="extruder10">VzHEX</div>
-    <div class="opt" id="extruder11">Creality K1</div>
-    <div class="opt" id="extruder12">Mini Sherpa</div>
-    <div class="opt" id="extruder13">HGX Lite</div>
-    <div class="opt" id="extruder14">ProtoXtruder</div>
-    <div class="opt" id="extruder15">Micro Sherpa</div>
-    <div class="opt" id="extruder16">Micro Sherpa Mirrored</div>
-  </div>
-</div>
-
-<!-- ===== SECTION 05: Hotend ===== -->
-<div class="section">
-  <h2>05 · Hotend</h2>
-  <div class="options">
-    <div class="opt" id="hotend1">Revo Voron</div>
-    <div class="opt" id="hotend2">Phaetus Dragon ST/HT</div>
-    <div class="opt" id="hotend3">Phaetus Dragon UHF</div>
-    <div class="opt" id="hotend4">Phaetus Dragonfly BMO</div>
-    <div class="opt" id="hotend5">Phaetus Dragonfly BMS6</div>
-    <div class="opt" id="hotend6">Phaetus Dragonfly BMS7</div>
-    <div class="opt" id="hotend7">Phaetus Rapido</div>
-    <div class="opt" id="hotend8">Phaetus Rapido UHF</div>
-    <div class="opt" id="hotend9">Slice Mosquito</div>
-    <div class="opt" id="hotend10">Nitram VolcoMosq</div>
-    <div class="opt" id="hotend11">Mellow NF Crazy Volcano</div>
-    <div class="opt" id="hotend12">Triangle Labs TZ V6</div>
-    <div class="opt" id="hotend13">Triangle Labs T-Vocano Dragon</div>
-    <div class="opt" id="hotend14">Triangle Labs CHCB-V V6DM</div>
-    <div class="opt" id="hotend15">Triangle Labs TCHC TD6S</div>
-    <div class="opt" id="hotend16">Ancufy Store CHC-V6</div>
-    <div class="opt" id="hotend17">Triangle Labs Dragon ACE</div>
-    <div class="opt" id="hotend18">DropEffect neXtG</div>
-    <div class="opt" id="hotend19">DropEffect neXtG UHF</div>
-    <div class="opt" id="hotend20">DropEffect XG</div>
-    <div class="opt" id="hotend21">Bambu Lab X1</div>
-    <div class="opt" id="hotend22">Creality K1</div>
-    <div class="opt" id="hotend23">Creality Spider Pro</div>
-    <div class="opt" id="hotend24">E3D V6 compatible</div>
-    <div class="opt" id="hotend25">Goliath</div>
-  </div>
-
-  <!-- Core file output (one per extruder group, only the active one shows) -->
-  <div class="core-display hidden" id="micro"><span id="microCore"></span></div>
-  <div class="core-display hidden" id="mini"><span id="miniCore"></span></div>
-  <div class="core-display hidden" id="orb15"><span id="orb15Core"></span></div>
-  <div class="core-display hidden" id="orb20"><span id="orb20Core"></span></div>
-  <div class="core-display hidden" id="lgxLite"><span id="lgxLiteCore"></span></div>
-</div>
-
-<!-- ===== SECTION 06: Probe ===== -->
-<div class="section">
-  <h2>06 · Probe</h2>
-
-  <div class="hidden" id="probes01">
-    <p class="sub-label">Orbiter / Standard</p>
-    <div class="options">
-      <div class="opt" id="probe0">None</div>
-      <div class="opt" id="probe1">ZeroClick</div>
-      <div class="opt" id="probe2">Differential IR</div>
-    </div>
-  </div>
-
-  <div class="hidden" id="probes02">
-    <p class="sub-label">Orbiter / Ender 3</p>
-    <div class="options">
-      <div class="opt" id="probe3">None</div>
-      <div class="opt" id="probe4">Omron</div>
-      <div class="opt" id="probe5">Klicky</div>
-      <div class="opt" id="probe6">BL-Touch</div>
-      <div class="opt" id="probe7">MicroProbe</div>
-      <div class="opt" id="probe8">Euclid</div>
-      <div class="opt" id="probe9">Beacon3D</div>
-      <div class="opt" id="probe10">PINDA</div>
-      <div class="opt" id="probe11">Differential IR</div>
-    </div>
-  </div>
-
-  <div id="probes03">
-    <p class="sub-label">LGX Lite / Default</p>
-    <div class="options">
-      <div class="opt" id="probe12">None</div>
-      <div class="opt" id="probe13">Omron</div>
-      <div class="opt" id="probe14">Klicky</div>
-      <div class="opt" id="probe15">BL-Touch</div>
-      <div class="opt" id="probe16">MicroProbe</div>
-      <div class="opt" id="probe17">Euclid</div>
-      <div class="opt" id="probe18">Beacon3D</div>
-      <div class="opt" id="probe19">PINDA</div>
-      <div class="opt" id="probe20">Differential IR</div>
-      <div class="opt" id="probe21">Mini Stealth DAB</div>
-    </div>
-  </div>
-
-  <div class="hidden" id="probes04">
-    <p class="sub-label">Sherpa Micro / Ender 3</p>
-    <div class="options">
-      <div class="opt" id="probe22">None</div>
-      <div class="opt" id="probe23">Micron Compatible</div>
-      <div class="opt" id="probe24">Beacon3D</div>
-      <div class="opt" id="probe25">Boop beta4 Wired</div>
-      <div class="opt" id="probe26">Boop beta4 PCB</div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== SECTION 07: Umbilical ===== -->
-<div class="section">
-  <h2>07 · Umbilical PCB</h2>
-  <div class="options">
-    <div class="opt" id="umbilical0">No</div>
-    <div class="opt" id="umbilical1">Yes</div>
-  </div>
-</div>
-
-<!-- ===== SECTION 08: Cable Chain ===== -->
-<div class="section hidden" id="cblChain">
-  <h2>08 · Cable Chain</h2>
-  <div class="options">
-    <div class="opt" id="chain0">None</div>
-    <div class="opt" id="chain1">2 Hole</div>
-    <div class="opt" id="chain2">3 Hole</div>
-  </div>
-</div>
-
-<!-- ===== SECTION 09: Strain Relief ===== -->
-<div class="section hidden" id="strain">
-  <h2>09 · Strain Relief</h2>
-  <div class="options">
-    <div class="opt" id="strain0">High</div>
-    <div class="opt" id="strain1">Low</div>
-  </div>
-</div>
-
-<!-- ===== SECTION 10: Display ===== -->
-<div class="section">
-  <h2>10 · Display</h2>
-  <div class="options">
-    <div class="opt" id="display0">None</div>
-    <div class="opt" id="display1">Knomi</div>
-    <div class="opt" id="display2">Knomi2</div>
-    <div class="opt" id="display3">Mellow Fly Halo</div>
-  </div>
-</div>
-
-<!-- ===== SECTION 11: Status LED ===== -->
-<div class="section">
-  <h2>11 · Status LED</h2>
-  <div class="options">
-    <div class="opt" id="status1">NeoPixel</div>
-    <div class="opt" id="status2">Rainbow Barf</div>
-  </div>
-</div>
-
-<!-- ===== Validation output ===== -->
-<div id="text"></div>
 
 <script src="script.js"></script>
 </body>
